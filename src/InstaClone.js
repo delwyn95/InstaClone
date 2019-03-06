@@ -3,16 +3,26 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 
 class InstaClone extends Component {
 
-    render(){
-        return(
+    render(){ 
+        return( 
             <View style = {{flex: 1, width:100 + "%", height: 100 + "%" }}>
             <View style={styles.tempNav}>
-                <Text> Instagram</Text>    
+                <Text > Uglygram</Text>    
+            </View> 
+            <View style={styles.userBar}> 
+            
+            <View style = {{ flexDirection: "row", alignItems: 'center', }}>
+                <Image 
+                style = {styles.userPic}
+                source = {{
+                    uri:"https://lh3.googleusercontent.com/mg_fwh_obOFCS_E42lRSb7V-JUzisbmnav4v87whIyywy5ymPS-mQRYIjhCq2qs5F4W6TxnV4SCP7HRErcfGjQKTXJw"
+                    }}
+                />
+                <Text style= {{marginLeft: 5}}>Gayake.Yit</Text>
+            </View>
+         
             </View>
             
-            <View style={styles.userBar}>
-            </View>
-
             <Image 
                 style={{ width: 100 + "%", height: 100}}
                 source={{
@@ -40,7 +50,14 @@ const styles = StyleSheet.create({
     userBar:{
         width: 100 + '%',
         height: 50,
-        backgroundColor: "rgb(255,255,255)"
+        backgroundColor: "rgb(255,255,255)",
+        flexDirection: 'row',
+        marginHorizontal: 10,
+    },
+    userPic:{
+        height: 40,
+        width:40,
+        borderRadius: 20,
     }
 
 })

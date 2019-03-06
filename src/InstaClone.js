@@ -1,22 +1,33 @@
 import React, {Component} from 'react';
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity } from 'react-native';
 import config from './config';
 
 class InstaClone extends Component {
     constructor(){
         super();
             this.state = {
+                disliked: false,
                 screenWidth: Dimensions.get("window").width
+                
             };
+    }
+
+    dislikeToggle(){
+        this.setState({
+            disliked: !this.state.disliked
+        })
     }
 
 
     render(){ 
         const imageHeight = Math.floor(this.state.screenWidth * 1.1);
-        const imageUri = "https://lh3.googleusercontent.com/AMCbjqDdNvCR6Y_kyio_uwejcX2AFevF8NMucY5YDrUSL6BVNoeDhbYX8ZEhp0Yvm8jCszGsif-HlwfoH9oOpMLO4A" + 
+        const imageUri = "https://lh3.googleusercontent.com/oHmovKBwQSNcvAcsv8423_rMOO5gvkbj0GdJkaDsn7bjfPzBW0ZkqvKNQEr0eF1bzgn55TVGfYie7Gj-LGrEGPmf3g" + 
         "=s" + 
         imageHeight +
         "-c";
+
+        const dislikeColor = (this.state.disliked) ? "rgb(252,61,57)" : null;
+        const dislikeIcon = (this.state.disliked)? config.images.thumbedIcon : config.images.thumbIcon;
         
         return( 
     
@@ -33,7 +44,7 @@ class InstaClone extends Component {
                     uri:"https://lh3.googleusercontent.com/mg_fwh_obOFCS_E42lRSb7V-JUzisbmnav4v87whIyywy5ymPS-mQRYIjhCq2qs5F4W6TxnV4SCP7HRErcfGjQKTXJw"
                     }}
                 />
-                <Text style= {{marginLeft: 5}}>Gayake.Yit</Text>
+                <Text style= {{marginLeft: 5}}>Ugly.Yit</Text>
                 
             </View>
             <View style={{alignItems: "center"}}>
@@ -43,13 +54,36 @@ class InstaClone extends Component {
             </View>
 
             </View>
-            <Image 
-                style={{ width: this.state.screenWidth, height: 400 }}
-                source={{
-                    uri: imageUri
-                    }}
-            />
-            <View></View>
+            <TouchableOpacity 
+            onPress={()=> {
+            this.dislikeToggle();
+            // alert('You ugly AF!')
+            }}>
+                <Image 
+                    style={{ width: this.state.screenWidth, height: 400 }}
+                    source={{
+                        uri: imageUri
+                        }}
+                />
+            </TouchableOpacity>
+            <View style={styles.iconBar}>
+                <TouchableOpacity 
+                onPress={()=> {
+                this.dislikeToggle();
+                // alert('You ugly AF!')
+                }}>
+                    <Image style={[styles.icon, 
+                    { height:35, width: 35, tintColor: dislikeColor}]} 
+                    source={dislikeIcon}
+                    />
+                </TouchableOpacity>
+                <Image style={[styles.icon, {height:32, width: 31}]} 
+                source={config.images.bubbleIcon}
+                />
+                <Image style={[styles.icon, {height:35, width: 38}]} 
+                source={config.images.arrowIcon}
+                />
+            </View>
             </View>
 
         )
@@ -80,6 +114,20 @@ const styles = StyleSheet.create({
         height: 40,
         width:40,
         borderRadius: 20,
+    },
+    iconBar: {
+        height: config.styleConstants.rowHeight,
+        width: 100 + "%",
+        borderColor: "rgb(233,233,233)",
+        borderTopWidth: StyleSheet.hairlineWidth,
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        flexDirection: "row",
+        alignItems: 'center'
+        
+    },
+    icon:{
+        marginLeft: 8,
+
     }
 
 })

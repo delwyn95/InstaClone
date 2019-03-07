@@ -44,7 +44,7 @@ class InstaClone extends Component {
                     uri:"https://lh3.googleusercontent.com/mg_fwh_obOFCS_E42lRSb7V-JUzisbmnav4v87whIyywy5ymPS-mQRYIjhCq2qs5F4W6TxnV4SCP7HRErcfGjQKTXJw"
                     }}
                 />
-                <Text style= {{marginLeft: 5}}>Ugly.Yit</Text>
+                <Text style= {{marginLeft: 5}}>Gayake.Yit</Text>
                 
             </View>
             <View style={{alignItems: "center"}}>
@@ -54,7 +54,8 @@ class InstaClone extends Component {
             </View>
 
             </View>
-            <TouchableOpacity 
+            <TouchableOpacity
+            activeOpacity ={0.7} 
             onPress={()=> {
             this.dislikeToggle();
             // alert('You ugly AF!')
@@ -83,6 +84,13 @@ class InstaClone extends Component {
                 <Image style={[styles.icon, {height:35, width: 38}]} 
                 source={config.images.arrowIcon}
                 />
+            </View>
+            <View style={styles.iconBar}>
+                <Image style={[styles.icon, 
+                        { height:35, width: 35 }]} 
+                        source={config.images.thumbedIcon}
+                />
+                <Text> 120 Dislikes </Text>
             </View>
             </View>
 
@@ -128,7 +136,8 @@ const styles = StyleSheet.create({
     icon:{
         marginLeft: 8,
 
-    }
+    },
+
 
 })
 
